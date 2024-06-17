@@ -52,6 +52,58 @@ program
     }
   });
 
+
+// Task 3
+  program
+  .command('list-files-filtered <bucketName> <regex> [prefix]')
+  .description('List an AWS bucket\'s files that match a "filter" regex with an optional prefix')
+  .action(async (bucketName: string, regex: string, prefix?: string) => {
+    console.log(`Listing files in bucket: ${bucketName} with regex: ${regex} and prefix: ${prefix || ''}`);
+    try {
+      const pattern = new RegExp(regex);
+      const params = { Bucket: bucketName, Prefix: prefix || '' };
+      const data = await s3Client.send(new ListObjectsV2Command(params));
+      data.Contents?.forEach(file => {
+        if (pattern.test(file.Key as string)) {
+          console.log(file.Key);
+        }
+      });
+    } catch (err) {
+      console.error('Error listing filtered files:', err);
+    }
+  });
+
+// task 4
+program
+.command('delete-files <bucketName> <regex> [prefix]')
+.description('Delete all files matching a regex from a bucket with an optional prefix')
+.action(async (bucketName: string, regex: string, prefix?: string) => {
+  console.log(`Deleting files in bucket: ${bucketName} with regex: ${regex} and prefix: ${prefix || ''}`);
+  try {
+    const pattern = new RegExp(regex);
+    const params = { Bucket: bucketName, Prefix: prefix || '' };
+    const data = await s3Client.send(new ListObjectsV2Command(params));
+    const filesToDelete = data.Contents?.filter(file => pattern.test(file.Key as string)).map(file => ({ Key: file.Key })) ?? [];
+
+    if (filesToDelete.length === 0) {
+      console.log('No files matched the regex');
+      return;
+    }
+
+    const deleteParams = {
+      Bucket: bucketName,
+      Delete: {
+        Objects: filesToDelete,
+        Quiet: false
+      }
+    };
+
+    const deleteData = await s3Client.send(new DeleteObjectsCommand(deleteParams));
+    console.log('Deleted files:', deleteData.Deleted?.map(file => file.Key).join(', '));
+  } catch (err) {
+    console.error('Error deleting files:', err);
+  }
+});
 program.parse(process.argv);
 
 
