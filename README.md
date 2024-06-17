@@ -1,4 +1,3 @@
-```markdown
 # RecruLC
 
 ## How to Run the Code
@@ -66,4 +65,3 @@ example regexp: '.*TestFile\.txt$'
 ## Notes
 
 - Ensure that you have the appropriate AWS credentials configured and that your IAM user or role has the necessary permissions to perform the listed actions on the S3 bucket.
-```
