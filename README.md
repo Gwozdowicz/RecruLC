@@ -38,16 +38,18 @@ Replace `path-to-file` with the actual path to the local file you want to upload
 To list files in the `developer-task` bucket under the `a-wing/` prefix that match a specific regex pattern (e.g., all `.txt` files), run:
 
 ```sh
-npm run start -- list-files-filtered developer-task '.*\.txt$' a-wing/
+npm run start -- list-files-filtered developer-task insert-regexp-here a-wing/  
 ```
+example regexp: '.*\.txt$'
 
 #### Task 4: Delete Files Matching a Regex from a Bucket
 
 To delete all files in the `developer-task` bucket under the `a-wing/` prefix that contain `TestFile.txt` in their name, run:
 
 ```sh
-npm run start -- delete-files developer-task '.*TestFile\.txt$' a-wing/
+npm run start -- delete-files developer-task insert-regexp-here a-wing/
 ```
+example regexp: '.*TestFile\.txt$'
 
 ## Notes
 
