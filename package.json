@@ -1,0 +1,22 @@
+{
+  "name": "recrulc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node src/index.ts"
+  },
+  "keywords": [],
+  "author": "Krzysztof Gwozdowicz",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1642.0",
+    "commander": "^12.1.0"
+  }, 
+  "devDependencies": {
+    "@types/commander": "^2.12.2",
+    "@types/node": "^20.14.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
