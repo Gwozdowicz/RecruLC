@@ -12,7 +12,8 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.598.0",
     "@aws-sdk/lib-storage": "^3.598.0",
-    "commander": "^12.1.0"
+    "commander": "^12.1.0",
+    "dotenv": "^16.4.5"
   },
   "devDependencies": {
     "@types/commander": "^2.12.2",

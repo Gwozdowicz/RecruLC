@@ -13,7 +13,19 @@ npm install
 
 Remeber to set Your AWS profile correctly
 
-### 2. Tasks
+### 2. Set up environment
+
+Create .env file in project root (package.json level)
+
+provide Your region
+```typescript
+eg. REGION=eu-central-1
+
+```
+- for this task purpose, region should be set to eu-west-1
+
+
+### 3. Tasks
 
 #### Task 1: List All Files in an S3 Bucket
 
@@ -54,5 +66,4 @@ example regexp: '.*TestFile\.txt$'
 ## Notes
 
 - Ensure that you have the appropriate AWS credentials configured and that your IAM user or role has the necessary permissions to perform the listed actions on the S3 bucket.
-- The `REGION` in the code is set to `eu-west-1`. Update it to your specific region if necessary.
 ```

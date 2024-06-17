@@ -5,8 +5,10 @@ import { uploadFile } from './tasks/task2-upload-file';
 import { listFilesFiltered } from './tasks/task3-find-files';
 import { deleteFiles } from './tasks/task4-delete-files-using-regexp';
 
+// import Region from CONFIG FILE
+import { REGION } from './config';
+
 // vars and clients
-const REGION = 'eu-west-1'; // Update to your region
 const s3Client = new S3Client({
     region: REGION  }); 
 
