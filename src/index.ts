@@ -10,12 +10,11 @@ import { REGION } from './config';
 
 // vars and clients
 const s3Client = new S3Client({
-    region: REGION  }); 
+  region: REGION,
+});
 
 // CLI program initialization
-program
-  .version('1.0.0')
-  .description('S3 CLI to manage S3 buckets');
+program.version('1.0.0').description('S3 CLI to manage S3 buckets');
 
 // Task 1
 program
@@ -36,7 +35,9 @@ program
 // Task 3
 program
   .command('list-files-filtered <bucketName> <regex> [prefix]')
-  .description('List an AWS bucket\'s files that match a "filter" regex with an optional prefix')
+  .description(
+    'List an AWS bucket\'s files that match a "filter" regex with an optional prefix',
+  )
   .action((bucketName: string, regex: string, prefix?: string) => {
     listFilesFiltered(s3Client, bucketName, regex, prefix);
   });
@@ -44,11 +45,12 @@ program
 // Task 4
 program
   .command('delete-files <bucketName> <regex> [prefix]')
-  .description('Delete all files matching a regex from a bucket with an optional prefix')
+  .description(
+    'Delete all files matching a regex from a bucket with an optional prefix',
+  )
   .action((bucketName: string, regex: string, prefix?: string) => {
     deleteFiles(s3Client, bucketName, regex, prefix);
   });
-
 
 // CLI program execute
 program.parse(process.argv);
